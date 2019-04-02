@@ -27,25 +27,23 @@ function playSong (hour) {
   if (sound) {
     sound.fade(1, 0, 500)
     sound.once('fade', () => {
-      sound = new Howl({
-        src: [`https://s3.us-east-2.amazonaws.com/chrome-nook/${game}/${hour}.ogg`],
-        loop: true,
-        volume: 0
-      })
-      sound.play()
-      sound.fade(0, 1, 500)
-      playing = true
+      playSound(hour)
     })
   } else {
-    sound = new Howl({
-      src: [`https://s3.us-east-2.amazonaws.com/chrome-nook/${game}/${hour}.ogg`],
-      loop: true,
-      volume: 0
-    })
-    sound.play()
-    sound.fade(0, 1, 500)
-    playing = true
+    playSound(hour)
   }
+}
+
+// Fades out and back in with new source
+function playSound (hour) {
+  sound = new Howl({
+    src: [`https://s3.us-east-2.amazonaws.com/chrome-nook/${game}/${hour}.ogg`],
+    loop: true,
+    volume: 0
+  })
+  sound.play()
+  sound.fade(0, 1, 500)
+  playing = true
 }
 
 // Ticks every second and checks the hour
