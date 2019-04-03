@@ -12,11 +12,25 @@ const badgeColors = {
   '9am': '#7a7a1d',
   '10am': '#919114',
   '11am': '#a3a310',
-  '12pm': '#adad05'
+  '12pm': '#adad05',
+  '1pm': '#a3a310',
+  '2pm': '#919114',
+  '3pm': '#7a7a1d',
+  '4pm': '#68681f',
+  '5pm': '#565620',
+  '6pm': '#4f4f25',
+  '7pm': '#474727',
+  '8pm': '#42422a',
+  '9pm': '#353526',
+  '10pm': '#28281f',
+  '11pm': '#21211d'
 }
 
 // Create audio tag to play music
 let sound
+
+// Global hours variable
+let globalHours
 
 // Variables to keep track of music
 let lastEventSentHour = ""
@@ -25,13 +39,23 @@ let playing = false
 // Pauses audio and then plays the next song based on the hour given
 function playSong (hour) {
   if (sound) {
-    sound.fade(1, 0, 500)
+    sound.fade(volume, 0, 500)
     sound.once('fade', () => {
       playSound(hour)
     })
   } else {
-    playSound(hour)
+    chrome.storage.sync.get(['state'], result => {
+      if (result['state'] && result['state'] !== 'pause') playSound(hour)
+    })
   }
+}
+
+function pauseSound () {
+  sound.fade(volume, 0, 500)
+  sound.once('fade', () => {
+    sound.pause()
+    chrome.browserAction.setBadgeText({ 'text': '' })
+  })
 }
 
 // Fades out and back in with new source
@@ -42,17 +66,18 @@ function playSound (hour) {
     volume: 0
   })
   sound.play()
-  sound.fade(0, 1, 500)
+  sound.fade(0, volume, 500)
   playing = true
+  chrome.browserAction.setBadgeBackgroundColor({ 'color': badgeColors[hour] })
+  chrome.browserAction.setBadgeText({ 'text': hour })
 }
 
 // Ticks every second and checks the hour
 function tick () {
   let dateHours = new Date().toLocaleString('en-US', { hour: 'numeric', hour12: true }).split(' ').join('').toLowerCase()
+  globalHours = dateHours
   if (!playing || (new Date().getMinutes() == "00" && dateHours !== lastEventSentHour)) {
     lastEventSentHour = dateHours
-    chrome.browserAction.setBadgeBackgroundColor({ 'color': badgeColors[dateHours] })
-    chrome.browserAction.setBadgeText({ 'text': dateHours })
     playSong(dateHours)
   }
 }

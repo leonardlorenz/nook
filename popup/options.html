@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script src="js/jquery.js"></script>
+        <script src="js/actions.js"></script>
+        <script src="js/options.js"></script>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="fonts/open-sans.css">
+    </head>
+    <body>
+        <div id="header">
+            <button id="stateToggle" state="play" aria-label="Play/Pause"></button>
+            <h1>Nook</h1>
+        </div>
+        <div id="content">
+            <label for="gameSelect">Change game:</label>
+            <select id="gameSelect">
+                <option value="wild-world">Animal Crossing: Wild World (DS)</option>
+                <option value="new-leaf" selected>Animal Crossing: New Leaf (3DS)</option>
+            </select>
+            <label for="volume">Volume:</label>
+            <input type="range" min="0" max="1" id="volume" step="0.1">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+button#stateToggle[state="play"] {
+  background-image: url(../../icons/media-pause.svg);
+}
+
+button#stateToggle[state="pause"] {
+  background-image: url(../../icons/media-play.svg);
+}
+
+button#stateToggle {
+  border: none;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  right: 5px;
+  top: 11px;
+  box-shadow: #646464 0 0 6px 0px;
+  background-position: center;
+  outline: 0;
+  cursor: pointer;
+  background-repeat: repeat;
+  -webkit-transition: background-image 0.2s ease-in-out;
+  position: absolute;
+}
+
+body {
+  padding: 7px;
+  margin:1px;
+  font-family: 'Open Sans';
+  background-image: url(../images/bg.jpg);
+  background-repeat: repeat;
+  color:#fff;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: normal;
+  position: absolute;
+  top: -5px;
+  left: 7px;
+}
+
+label {
+  margin-bottom: 5px;
+  margin-top: 10px;
+  display: block;
+}
+
+label:nth-last-child() {
+  margin-bottom: 0px;
+}
+
+#header {
+  background-color: #00000048;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 50px;
+  width: 100%;
+}
+
+#content {
+  margin-top: 58px;
+}

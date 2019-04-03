@@ -9,4 +9,12 @@ $(document).ready(() => {
             chrome.runtime.sendMessage({ 'optionChange': ['game', $(e.target).val()] })
         })
     })
+    chrome.storage.sync.get(['optionVolume'], result => {
+        if (result['optionVolume']) {
+            $('#volume').val(+result['optionVolume'])
+        }
+        $('#volume').on('input', e => {
+            chrome.runtime.sendMessage({ 'optionChange': ['volume', $(e.target).val()] })
+        })
+    })
 })
