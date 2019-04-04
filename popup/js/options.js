@@ -12,7 +12,7 @@ $(document).ready(() => {
     chrome.storage.sync.get(['optionVolume'], result => {
         if (result['optionVolume']) {
             $('#volume').val(+result['optionVolume'])
-        }
+        } else $('#volume').val(1).change()
         $('#volume').on('input', e => {
             chrome.runtime.sendMessage({ 'optionChange': ['volume', $(e.target).val()] })
         })

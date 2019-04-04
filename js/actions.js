@@ -13,3 +13,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
   }
 })
+
+chrome.storage.sync.get(['state'], result => {
+  if (!result['state']) chrome.storage.sync.set({ 'state': 'play' })
+})

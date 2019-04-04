@@ -78,7 +78,10 @@ function tick () {
   globalHours = dateHours
   if (!playing || (new Date().getMinutes() == "00" && dateHours !== lastEventSentHour)) {
     lastEventSentHour = dateHours
-    playSong(dateHours)
+    chrome.storage.sync.get(['state'], result => {
+      if (result['state'] && result['state'] === 'pause') return
+      playSong(dateHours)
+    })
   }
 }
 setInterval(tick, 1000)
