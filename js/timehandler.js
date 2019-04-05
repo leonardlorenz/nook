@@ -69,7 +69,7 @@ function playSound (hour) {
   sound.fade(0, volume, 500)
   playing = true
   chrome.browserAction.setBadgeBackgroundColor({ 'color': badgeColors[hour] })
-  chrome.browserAction.setBadgeText({ 'text': hour })
+  chrome.browserAction.setBadgeText({ 'text': '♫' })
 }
 
 // Ticks every second and checks the hour
