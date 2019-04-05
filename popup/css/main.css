@@ -30,6 +30,15 @@ body {
   background-image: url(../images/bg.jpg);
   background-repeat: repeat;
   color:#fff;
+  height: fit-content;
+}
+
+html {
+  height: fit-content;
+}
+
+.vol {
+  margin-top: 3px;
 }
 
 h1 {
@@ -61,4 +70,14 @@ label:nth-last-child() {
 
 #content {
   margin-top: 58px;
+}
+
+input#volume {
+  margin-left: 83px;
+}
+
+label[for="volume"] {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0px;
 }
