@@ -20,5 +20,6 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
 * ~~Fix Wild World being snowy.~~
 * Add town tune feature to be played inbetween song transitions.
 * Add snowy/rainy versions.
+* Add KK Slider playing options and prepare files.
 
 This is a passion project and is not affiliated with Nintendo whatsoever.
