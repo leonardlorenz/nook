@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    if (!~navigator.platform.toUpperCase().indexOf('MAC')) $('head').append('<style>html { border-left: 1.5px white solid; border-right: 1.5px white solid; } #header { left: 1.5px; width: 99%; }</style>')
     chrome.storage.sync.get(['optionGame'], result => {
         if (result['optionGame']) {
             $('#gameSelect').find('option').filter((_, a) => {

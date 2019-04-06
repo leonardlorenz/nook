@@ -6,7 +6,19 @@ button#stateToggle[state="pause"] {
   background-image: url(../../icons/media-play.svg);
 }
 
-button#stateToggle {
+.thumbButton#github {
+  left: 9px;
+  background-image: url(../../icons/github.png);
+  background-size: 20px;
+  background-repeat: no-repeat;
+}
+
+span.offscreen {
+  left: -1000px;
+  position: absolute;
+}
+
+.thumbButton {
   border: none;
   background-color: #fff;
   width: 30px;
@@ -35,6 +47,7 @@ body {
 
 html {
   height: fit-content;
+  width: 325px;
 }
 
 .vol {
@@ -44,9 +57,8 @@ html {
 h1 {
   font-size: 22px;
   font-weight: normal;
-  position: absolute;
-  top: -5px;
-  left: 7px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 label {
@@ -70,6 +82,7 @@ label:nth-last-child() {
 
 #content {
   margin-top: 48px;
+  text-align: center;
 }
 
 .vol {
@@ -79,13 +92,11 @@ label:nth-last-child() {
 
 label[for="volume"] {
   text-align: center;
-  margin-bottom: 0;
   margin-top: 0px;
 }
 
 input[type=range] {
   -webkit-appearance: none;
-  margin-left: 75px;
 }
 
 input[type=range]:focus {
