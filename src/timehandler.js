@@ -45,7 +45,9 @@ function playSong (hour) {
     })
   } else {
     chrome.storage.sync.get(['state'], result => {
-      if (result['state'] && result['state'] !== 'pause') playSound(hour)
+      if (result['state'] && result['state'] !== 'pause') {
+        playSound(hour)
+      }
     })
   }
 }
@@ -55,6 +57,7 @@ function pauseSound () {
   sound.once('fade', () => {
     sound.pause()
     chrome.browserAction.setBadgeText({ 'text': '' })
+    chrome.runtime.sendMessage({ 'nowPlaying': 'Nothing!' })
   })
 }
 
@@ -68,6 +71,7 @@ function playSound (hour) {
   sound.play()
   sound.fade(0, volume, 500)
   playing = true
+  chrome.runtime.sendMessage({ 'nowPlaying': hour })
   chrome.browserAction.setBadgeBackgroundColor({ 'color': badgeColors[hour] })
   chrome.browserAction.setBadgeText({ 'text': '♫' })
 }

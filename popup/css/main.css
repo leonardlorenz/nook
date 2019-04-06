@@ -18,6 +18,10 @@ span.offscreen {
   position: absolute;
 }
 
+#nowPlaying {
+  font-weight: bold;
+}
+
 .thumbButton {
   border: none;
   background-color: #fff;
