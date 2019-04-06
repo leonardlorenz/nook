@@ -14,8 +14,8 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
 * ~~Add some styling and UI to options popup.~~
 * ~~Fix play being triggered when paused on hour change.~~
 * ~~Set volume if volume not set on start and set state if not set on start as well to fix first-time user issues.~~
-* Make music file sizes smaller and rip from original source. (~~GameCube~~, ~~Wild World~~, New Leaf, City Folk)
-* Add more games to the game select (~~GameCube~~, City Folk).
+* ~~Make music file sizes smaller and rip from original source. (GameCube, Wild World, New Leaf)~~
+* ~~Add more games to the game select (New Leaf, GameCube).~~
 * Add town tune feature to be played inbetween song transitions.
 * Add to Chrome store.
 
