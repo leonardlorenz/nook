@@ -1,14 +1,14 @@
 button#stateToggle[state="play"] {
-  background-image: url(../../icons/media-pause.svg);
+  background-image: url(../images/media-pause.svg);
 }
 
 button#stateToggle[state="pause"] {
-  background-image: url(../../icons/media-play.svg);
+  background-image: url(../images/media-play.svg);
 }
 
 .thumbButton#github {
   left: 9px;
-  background-image: url(../../icons/github.png);
+  background-image: url(../images/github.png);
   background-size: 20px;
   background-repeat: no-repeat;
 }
