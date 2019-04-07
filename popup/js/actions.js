@@ -1,7 +1,7 @@
 $(document).ready(() => {
   function nowPlaying (state) {
     if (state === 'play') {
-      $('#nowPlaying').text(new Date().toLocaleString('en-US', { hour: 'numeric', hour12: true }).split(' ').join('').toLowerCase())
+      chrome.runtime.sendMessage({ 'getNowPlaying': 'pls' }) 
     } else {
       $('#nowPlaying').text('Nothing!')
     }

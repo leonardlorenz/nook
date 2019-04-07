@@ -10,6 +10,16 @@ $(document).ready(() => {
             chrome.runtime.sendMessage({ 'optionChange': ['game', $(e.target).val()] })
         })
     })
+    chrome.storage.sync.get(['optionKK'], result => {
+        if (result['optionKK']) {
+            $('#kkSlider').find('option').filter((_, a) => {
+                return $(a).attr('value') === result['optionKK']
+            }).prop('selected', true).change()
+        }
+        $('#kkSlider').on('change', e => {
+            chrome.runtime.sendMessage({ 'optionChange': ['kkFrequency', $(e.target).val()] })
+        })
+    })
     chrome.storage.sync.get(['optionVolume'], result => {
         if (result['optionVolume']) {
             $('#volume').val(+result['optionVolume'])

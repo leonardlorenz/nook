@@ -13,7 +13,8 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
 5. Done!
 
 ## TODO:
-<details><summary>Finished:</summary>
+<details>
+  <summary>Finished:</summary>
   <ul>
     <li>Add play/pause button to options popup.</li>
     <li>Add some styling and UI to options popup.</li>
@@ -23,13 +24,15 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
     <li>Add more games to the game select (New Leaf, GameCube).</li>
     <li>Add to Chrome store.</li>
     <li>Fix Wild World being snowy.</li>
+    <li>Add KK Slider playing options and prepare files.</li>
   </ul>
 </details>
-<details><summary>To be finished:</summary>
-<ul>
-<li>Add town tune feature to be played inbetween song transitions.</li>
-<li>Add snowy/rainy versions.</li>
-<li>Add KK Slider playing options and prepare files.</li>
+<details>
+  <summary>To be finished:</summary>
+  <ul>
+    <li>Add town tune feature to be played inbetween song transitions.</li>
+    <li>Add snowy/rainy versions.</li>
+    <li>Add rain checkbox and volume slider</li>
   </ul>
 </details>
 

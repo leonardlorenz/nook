@@ -12,6 +12,13 @@ chrome.storage.sync.get(['optionVolume'], result => {
   if (result['optionVolume']) volume = +result['optionVolume']
 })
 
+// Check if volume has been configured and set it accordingly
+chrome.storage.sync.get(['optionKK'], result => {
+  if (result['optionKK']) {
+    KKSetting = result['optionKK']
+  }
+})
+
 // Fires when game is chosen from options page
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.optionChange) {
@@ -19,12 +26,17 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       case 'game':
         game = request.optionChange[1]
         chrome.storage.sync.set({ 'optionGame': request.optionChange[1] })
-        playing = false
+        playing = kkSliderCheck()
         break
       case 'volume':
         if (sound) sound.fade(volume, request.optionChange[1], 100)
         volume = request.optionChange[1]
         chrome.storage.sync.set({ 'optionVolume': volume })
+        break
+      case 'kkFrequency':
+        KKSetting = request.optionChange[1]
+        chrome.storage.sync.set({ 'optionKK': request.optionChange[1] })
+        playing = false
         break
     }
   }

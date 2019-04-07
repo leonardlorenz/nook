@@ -8,7 +8,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         break
       case 'play':
         chrome.storage.sync.set({ 'state': 'play' })
-        playSound(globalHours)
+        if (kkSliderCheck()) playRandomKK()
+        else playSong(globalHours)
         break
     }
   }
@@ -16,4 +17,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
 chrome.storage.sync.get(['state'], result => {
   if (!result['state']) chrome.storage.sync.set({ 'state': 'play' })
+})
+
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.getNowPlaying) {
+    chrome.runtime.sendMessage({ 'nowPlaying': nowPlaying }) 
+  }
 })
