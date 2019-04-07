@@ -13,14 +13,29 @@ $(document).ready(() => {
     }
   })
 
+  $('#rainCheckbox').on('change', (e) => {
+    setTimeout(function () {
+      let state = e.target.checked ? 'on' : 'off'
+      chrome.runtime.sendMessage({ 'rainStateChange': state })
+    }, 250)
+  })
+
   $('#stateToggle').on('click', (e) => {
-    var state = $(e.currentTarget).attr('state')
-    var newState = state === 'pause' ? 'play': 'pause'
+    let state = $(e.currentTarget).attr('state')
+    let newState = state === 'pause' ? 'play': 'pause'
     chrome.runtime.sendMessage({ 'stateChange': newState })
     $(e.currentTarget).attr('state', newState)
   })
 
-  chrome.storage.sync.get(['state'], result => {
+  chrome.storage.local.get(['rainState'], result => {
+    if (result['rainState']) {
+      if (result['rainState'] === 'on') {
+        $('#rainCheckbox').prop('checked', true)
+      }
+    }
+  })
+
+  chrome.storage.local.get(['state'], result => {
     if (result['state']) {
       $('#stateToggle').attr('state', result['state'])
       nowPlaying(result['state'])

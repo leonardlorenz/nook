@@ -99,6 +99,19 @@ label[for="volume"] {
   margin-top: 0px;
 }
 
+label[for="rain"] {
+  margin-top: 6px;
+}
+
+.volumeBlock {
+  display: inline-block;
+}
+
+input#rainCheckbox {
+  position: relative;
+  top: 2px;
+}
+
 input[type=range] {
   -webkit-appearance: none;
 }

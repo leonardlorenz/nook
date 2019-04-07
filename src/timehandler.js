@@ -31,6 +31,7 @@ const kkSongs = ["K.K. Casbah","K.K. Chorale Aircheck","K.K. Chorale","K.K. Cond
 
 // Create audio tag to play music
 let sound
+let rainSound
 
 // Global hours variable
 let globalHours
@@ -38,6 +39,7 @@ let globalDateDay
 
 // Global Now Playing
 let nowPlaying = ''
+let raining = false
 
 // Variables to keep track of music
 let lastEventSentHour = ''
@@ -60,6 +62,26 @@ function playRandomKK (check = false) {
   playSong(`${kkSongs[~~(Math.random() * 146) + 1]}.mp3`, globalHours, true)
 }
 
+function playRain () {
+  if (rainSound) rainSound.unload()
+  rainSound = new Howl({
+    src: [`https://s3.us-east-2.amazonaws.com/chrome-nook/rain/rain.ogg`],
+    loop: true,
+    volume: 0
+  })
+  rainSound.play()
+  rainSound.fade(0, rainVolume, 500)
+}
+
+function pauseRain () {
+  if (rainSound) {
+    rainSound.fade(rainVolume, 0, 500)
+    rainSound.once('fade', () => {
+      rainSound.pause()
+    })
+  }
+}
+
 // Pauses audio and then plays the next song based on the hour given
 function playSong (name, hour = null, kk = null) {
   if (sound) {
@@ -68,7 +90,7 @@ function playSong (name, hour = null, kk = null) {
       playSound(name, hour, kk)
     })
   } else {
-    chrome.storage.sync.get(['state'], result => {
+    chrome.storage.local.get(['state'], result => {
       if (result['state'] && result['state'] !== 'pause') {
         playSound(name, hour, kk)
       }
@@ -77,6 +99,7 @@ function playSong (name, hour = null, kk = null) {
 }
 
 function pauseSound () {
+  pauseRain()
   sound.fade(volume, 0, 500)
   sound.once('fade', () => {
     sound.pause()
@@ -89,6 +112,7 @@ function pauseSound () {
 // Fades out and back in with new source
 function playSound (name, hour, kk) {
   if (sound) sound.unload()
+  if (raining) playRain()
   let thisGame = game
   if (kk) thisGame = 'kk-slider'
   sound = new Howl({
@@ -117,10 +141,12 @@ function tick () {
   globalHours = dateHours
   if (!playing || (new Date().getMinutes() == "00" && dateHours !== lastEventSentHour)) {
     lastEventSentHour = dateHours
-    chrome.storage.sync.get(['state'], result => {
+    chrome.storage.local.get(['state'], result => {
       if (result['state'] && result['state'] === 'pause') return
       if (kkSliderCheck()) playRandomKK()
-      else playSong(globalHours)
+      else {
+        playSong(globalHours)
+      }
     })
   }
 }

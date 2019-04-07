@@ -1,7 +1,7 @@
 {
   "name": "Nook",
   "description": "Nook is a Chrome extension that plays Animal Crossing hourly themes on the hour.",
-  "version": "0.0.0.1",
+  "version": "0.0.1.2",
   "manifest_version": 2,
   "icons": {
     "128": "icons/128.png"

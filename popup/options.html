@@ -13,8 +13,14 @@
             <button id="stateToggle" class="thumbButton" state="play" aria-label="Play/Pause" title="Play/Pause"></button>
         </div>
         <div id="content">
-            <label for="volume">Volume</label>
-            <input type="range" min="0" max="1" id="volume" step="0.1">
+            <div class="volumeBlock">
+              <label for="volume">Music Volume</label>
+              <input type="range" min="0" max="1" id="volume" step="0.1">
+            </div>
+            <div class="volumeBlock">
+              <label for="rain" id="rainDescriptor">Rain Volume <input type="checkbox" id="rainCheckbox" aria-labelledby="rainDescriptor"></label>
+              <input type="range" min="0" max="1" id="rain" step="0.1">
+            </div>
             <label>Now playing: <span id="nowPlaying"></span></label>
             <label for="gameSelect">Change game:</label>
             <select id="gameSelect">
