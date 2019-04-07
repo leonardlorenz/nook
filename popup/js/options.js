@@ -36,4 +36,9 @@ $(document).ready(() => {
             chrome.runtime.sendMessage({ 'optionChange': ['rainVolume', $(e.target).val()] })
         })
     })
+    chrome.management.getSelf(res => {
+        if (res.installType === 'development') {
+            $('#ver').text(' (dev)')
+        }
+    })
 })
