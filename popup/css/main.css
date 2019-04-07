@@ -35,7 +35,9 @@ span.offscreen {
   outline: 0;
   cursor: pointer;
   background-repeat: repeat;
-  -webkit-transition: background-image 0.2s ease-in-out;
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
   position: absolute;
 }
 
@@ -43,15 +45,17 @@ body {
   padding: 7px;
   margin:1px;
   font-family: 'Open Sans';
-  background-image: url(../images/bg.jpg);
+  background: url(../images/bg.jpg);
   background-repeat: repeat;
   color:#fff;
   height: fit-content;
+  font-size: 75%;
 }
 
 html {
   height: fit-content;
   width: 325px;
+  width: -moz-fit-content;
 }
 
 .vol {
@@ -114,6 +118,7 @@ input#rainCheckbox {
 
 input[type=range] {
   -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 input[type=range]:focus {
@@ -124,6 +129,12 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 8.4px;
   cursor: pointer;
   background: #dedede;
+}
+
+input[type=range]::-moz-range-track {
+  height: 8.4px !important;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -138,7 +149,19 @@ input[type=range]::-webkit-slider-thumb {
   transition: all 0.5s ease;
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  height: 18px;
+  width: 16px;
+  border-radius: 3px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+  transition: all 0.5s ease;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track, input[type=range]:focus::-moz-range-track {
   background: #fff;
 }
 
