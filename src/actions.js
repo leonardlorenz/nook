@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 })
 
 chrome.storage.local.get(['state'], result => {
-  if (!result['state']) chrome.storage.local.set({ 'state': 'play' })
+  if (!result['state']) chrome.storage.local.set({ 'state': 'pause' })
 })
 
 chrome.storage.local.get(['rainState'], result => {
