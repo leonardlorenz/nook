@@ -3,6 +3,7 @@
 Nook is a simple Chrome extension that plays the music and hourly themes found in Animal Crossing in real-time. 
 
 **[Chrome Store Link](https://chrome.google.com/webstore/detail/nook/gndfjlldkaonpbpdagdnpgobcbgcpdah)**
+**[Firefox Store Link](https://addons.mozilla.org/en-US/firefox/addon/nook/)**
 
 ## Installation:
 
@@ -23,6 +24,7 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
     <li>Make music file sizes smaller and rip from original source. (GameCube, Wild World, New Leaf)</li>
     <li>Add more games to the game select (New Leaf, GameCube).</li>
     <li>Add to Chrome store.</li>
+    <li>Add to Firefox store.</li>
     <li>Fix Wild World being snowy.</li>
     <li>Add KK Slider playing options and prepare files.</li>
     <li>Add rain checkbox and volume slider.</li>
