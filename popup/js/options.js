@@ -24,7 +24,7 @@ $(document).ready(() => {
         if (result['optionVolume']) {
             $('#volume').val(+result['optionVolume'])
         } else $('#volume').val(1).change()
-        $('#volume').on('input', e => {
+        $('#volume').on('change', e => {
             chrome.runtime.sendMessage({ 'optionChange': ['volume', $(e.target).val()] })
         })
     })
@@ -32,7 +32,7 @@ $(document).ready(() => {
         if (result['optionRainVolume']) {
             $('#rain').val(+result['optionRainVolume'])
         } else $('#rain').val(0).change()
-        $('#rain').on('input', e => {
+        $('#rain').on('change', e => {
             chrome.runtime.sendMessage({ 'optionChange': ['rainVolume', $(e.target).val()] })
         })
     })
