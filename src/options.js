@@ -25,6 +25,15 @@ chrome.storage.local.get(['optionKK'], result => {
   }
 })
 
+// Check if KK songlist has been configured and set
+chrome.storage.local.get(['optionKKSonglist'], result => {
+  if (result['optionKKSonglist']) {
+    kkSongs = result['optionKKSonglist']
+  } else {
+    chrome.storage.local.set({ 'optionKKSonglist': kkDefaultSongs })
+  }
+})
+
 // Fires when game is chosen from options page
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.optionChange) {
@@ -47,6 +56,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       case 'kkFrequency':
         KKSetting = request.optionChange[1]
         chrome.storage.local.set({ 'optionKK': request.optionChange[1] })
+        playing = false
+        break
+      case 'kkSonglist':
+        kkSongs = request.optionChange[1]
+        chrome.storage.local.set({ 'optionKKSonglist': request.optionChange[1] })
         playing = false
         break
     }
