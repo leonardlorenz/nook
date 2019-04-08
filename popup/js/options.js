@@ -1,41 +1,29 @@
 $(document).ready(() => {
+    // If not Mac, add borders for styling purposes
     if (!~navigator.platform.toUpperCase().indexOf('MAC')) $('head').append('<style>html { border-left: 1.5px white solid; border-right: 1.5px white solid; } #header { left: 1.5px; width: 99%; }</style>')
-    chrome.storage.local.get(['optionGame'], result => {
-        if (result['optionGame']) {
-            $('#gameSelect').find('option').filter((_, a) => {
-                return $(a).attr('value') === result['optionGame']
-            }).prop('selected', true).change()
+    // Get game, change the game select box (or dont), and add a change event listener
+    function doOptionSetup (type, settingName, element, optionToSet, defaultVal) {
+        switch (type) {
+            case 'select':
+              chrome.storage.local.get([settingName], result => {
+                if (result[settingName]) $(element).find('option').filter((_, a) => { return $(a).attr('value') === result[settingName] }).prop('selected', true).change()
+                $(element).on('change', e => { chrome.runtime.sendMessage({ 'optionChange': [optionToSet, $(e.target).val()] }) })
+              })
+              break
+            case 'range':
+              chrome.storage.local.get([settingName], result => {
+                if (result[settingName]) $(element).val(+result[settingName])
+                else $(element).val(defaultVal).change()
+                $(element).on('change', e => { chrome.runtime.sendMessage({ 'optionChange': [optionToSet, $(e.target).val()] }) })
+              })
+              break
         }
-        $('#gameSelect').on('change', e => {
-            chrome.runtime.sendMessage({ 'optionChange': ['game', $(e.target).val()] })
-        })
-    })
-    chrome.storage.local.get(['optionKK'], result => {
-        if (result['optionKK']) {
-            $('#kkSlider').find('option').filter((_, a) => {
-                return $(a).attr('value') === result['optionKK']
-            }).prop('selected', true).change()
-        }
-        $('#kkSlider').on('change', e => {
-            chrome.runtime.sendMessage({ 'optionChange': ['kkFrequency', $(e.target).val()] })
-        })
-    })
-    chrome.storage.local.get(['optionVolume'], result => {
-        if (result['optionVolume']) {
-            $('#volume').val(+result['optionVolume'])
-        } else $('#volume').val(1).change()
-        $('#volume').on('change', e => {
-            chrome.runtime.sendMessage({ 'optionChange': ['volume', $(e.target).val()] })
-        })
-    })
-    chrome.storage.local.get(['optionRainVolume'], result => {
-        if (result['optionRainVolume']) {
-            $('#rain').val(+result['optionRainVolume'])
-        } else $('#rain').val(0).change()
-        $('#rain').on('change', e => {
-            chrome.runtime.sendMessage({ 'optionChange': ['rainVolume', $(e.target).val()] })
-        })
-    })
+    }
+    
+    doOptionSetup('select', 'optionGame', '#gameSelect', 'game')
+    doOptionSetup('select', 'optionKK', '#kkSlider', 'kkFrequency')
+    doOptionSetup('range', 'optionVolume', '#volume', 'volume', 1)
+    doOptionSetup('range', 'optionRainVolume', '#rain', 'rainVolume', 0)
     chrome.management.getSelf(res => {
         if (res.installType === 'development') {
             $('#ver').text(' (dev)')
