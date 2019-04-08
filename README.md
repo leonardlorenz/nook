@@ -35,6 +35,7 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
   <ul>
     <li>Add town tune feature to be played inbetween song transitions.</li>
     <li>Add loop checkbox for hourly music.</li>
+    <li>Add random shuffling select box and toggle</li>
   </ul>
 </details>
 
