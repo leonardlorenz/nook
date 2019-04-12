@@ -102,7 +102,7 @@ function playSound (name, hour, kk) {
   let thisGame = game
   if (kk) thisGame = 'kk-slider'
   sound = new Howl({
-    src: [`https://s3.us-east-2.amazonaws.com/chrome-nook/${thisGame}/${!kk && grandfatherMode ? 'full/' : ''}${name}.ogg`],
+    src: [`https://d17orwheorv96d.cloudfront.net/${thisGame}/${!kk && grandfatherMode ? 'full/' : ''}${name}.ogg`],
     loop: true,
     volume: 0,
     onend: () => {
