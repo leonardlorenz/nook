@@ -103,7 +103,7 @@ function playSound (name, hour, kk) {
   if (kk) thisGame = 'kk-slider'
   sound = new Howl({
     src: [`https://d17orwheorv96d.cloudfront.net/${thisGame}/${!kk && grandfatherMode ? 'full/' : ''}${name}.ogg`],
-    loop: true,
+    loop: !grandfatherMode,
     volume: 0,
     onend: () => {
       if (grandfatherMode) pauseSound()
@@ -129,7 +129,7 @@ function tick () {
   if (!playing || (new Date().getMinutes() == "00" && dateHours !== lastEventSentHour)) {
     lastEventSentHour = dateHours
     chrome.storage.local.get(['state'], result => {
-      if ((result['state'] && result['state'] === 'pause') && (!grandfatherMode || !!~gmHours.indexOf(globalHours))) return
+      if ((result['state'] && result['state'] === 'pause') && (!grandfatherMode || !~gmHours.indexOf(globalHours))) return
       if (kkSliderCheck()) playRandomKK()
       else {
         playSong(globalHours)
