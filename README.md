@@ -27,7 +27,7 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
 | Add KK Slider playing options and prepare files.                                                               | Normal   | Done        |
 | Add rain checkbox and volume slider.                                                                           | Low      | Done        |
 | Add snowy/rainy versions.                                                                                      | Normal   | Done        |
-| Add grandfather mode.                                                                                          | Low      | In Progress |
+| Add grandfather mode.                                                                                          | Low      | Done        |
 | Add town tune feature to be played inbetween song transitions.                                                 | Low      | TBD         |
 | Add random shuffling select box and toggle.                                                                    | Low      | TBD         |
 
