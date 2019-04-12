@@ -76,7 +76,7 @@ function playSong (name, hour = null, kk = null) {
     })
   } else {
     chrome.storage.local.get(['state'], result => {
-      if (result['state'] && result['state'] !== 'pause') {
+      if (!((result['state'] && result['state'] === 'pause') && (!grandfatherMode || !~gmHours.indexOf(globalHours)))) {
         playSound(name, hour, kk)
       }
     })
@@ -101,6 +101,7 @@ function playSound (name, hour, kk) {
   if (raining) playRain()
   let thisGame = game
   if (kk) thisGame = 'kk-slider'
+  alert(`https://d17orwheorv96d.cloudfront.net/${thisGame}/${!kk && grandfatherMode ? 'full/' : ''}${name}.ogg`)
   sound = new Howl({
     src: [`https://d17orwheorv96d.cloudfront.net/${thisGame}/${!kk && grandfatherMode ? 'full/' : ''}${name}.ogg`],
     loop: !grandfatherMode,

@@ -25,8 +25,10 @@ chrome.storage.local.get(['optionKK'], result => {
 
 // Check if Grandfather Mode has been configured and set it accordingly
 chrome.storage.local.get(['optionGM'], result => {
-  if (result['optionGM']) grandfatherMode = result['optionGM']
-  else chrome.storage.local.set({ 'optionGM': false })
+  if (result['optionGM']) {
+    grandfatherMode = result['optionGM']
+    if (grandfatherMode) playing = true
+  } else chrome.storage.local.set({ 'optionGM': false })
 })
 
 // Check if KK songlist has been configured and set
