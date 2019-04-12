@@ -13,31 +13,23 @@ Nook is a simple Chrome extension that plays the music and hourly themes found i
 5. Done!
 
 ## TODO:
-<details>
-  <summary>Finished:</summary>
-  <ul>
-    <li>Add play/pause button to options popup.</li>
-    <li>Add some styling and UI to options popup.</li>
-    <li>Fix play being triggered when paused on hour change.</li>
-    <li>Set volume if volume not set on start and set state if not set on start as well to fix first-time user issues.</li>
-    <li>Make music file sizes smaller and rip from original source. (GameCube, Wild World, New Leaf)</li>
-    <li>Add more games to the game select (New Leaf, GameCube).</li>
-    <li>Add to Chrome store.</li>
-    <li>Add to Firefox store.</li>
-    <li>Fix Wild World being snowy.</li>
-    <li>Add KK Slider playing options and prepare files.</li>
-    <li>Add rain checkbox and volume slider.</li>
-    <li>Add snowy/rainy versions.</li>
-    <li>Add grandfather mode.</li>
-  </ul>
-</details>
-<details>
-  <summary>To be finished:</summary>
-  <ul>
-    <li>Add town tune feature to be played inbetween song transitions.</li>
-    <li>Add random shuffling select box and toggle</li>
-  </ul>
-</details>
+| Feature                                                                                                        | Priority | Status      |
+|----------------------------------------------------------------------------------------------------------------|----------|-------------|
+| Add play/pause button to options popup.                                                                        | High     | Done        |
+| Add some styling and UI to options popup.                                                                      | Normal   | Done        |
+| Fix play being triggered when paused on hour change.                                                           | Critical | Done        |
+| Set volume if volume not set on start and set state if not set on start as well to fix first-time user issues. | Critical | Done        |
+| Make music file sizes smaller and rip from original source. (GameCube, Wild World, New Leaf)                   | High     | Done        |
+| Add more games to the game select (New Leaf, GameCube).                                                        | High     | Done        |
+| Add to Chrome store.                                                                                           | Normal   | Done        |
+| Add to Firefox store.                                                                                          | Normal   | Done        |
+| Fix Wild World being snowy.                                                                                    | High     | Done        |
+| Add KK Slider playing options and prepare files.                                                               | Normal   | Done        |
+| Add rain checkbox and volume slider.                                                                           | Low      | Done        |
+| Add snowy/rainy versions.                                                                                      | Normal   | Done        |
+| Add grandfather mode.                                                                                          | Low      | In Progress |
+| Add town tune feature to be played inbetween song transitions.                                                 | Low      | TBD         |
+| Add random shuffling select box and toggle.                                                                    | Low      | TBD         |
 
 This is a passion project and is not affiliated with Nintendo whatsoever.
 Music sampled is owned by Nintendo Co., Ltd and composed by Kazumi Totaka.
