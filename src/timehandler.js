@@ -129,7 +129,7 @@ function tick () {
   if (!playing || (new Date().getMinutes() == "00" && dateHours !== lastEventSentHour)) {
     lastEventSentHour = dateHours
     chrome.storage.local.get(['state'], result => {
-      if ((result['state'] && result['state'] === 'pause') && (!grandfatherMode || ~gmHours.indexOf(globalHours))) return
+      if ((result['state'] && result['state'] === 'pause') && (!grandfatherMode || !!~gmHours.indexOf(globalHours))) return
       if (kkSliderCheck()) playRandomKK()
       else {
         playSong(globalHours)
