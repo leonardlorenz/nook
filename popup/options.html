@@ -33,6 +33,8 @@
                     <option value="new-leaf-rainy">AC: New Leaf (3DS) [Rainy]</option>
                     <option value="new-leaf-snowy">AC: New Leaf (3DS) [Snowy]</option>
                 </select>
+                <label for="grandfather">Grandfather Mode (plays once per hour) <input type="checkbox" id="grandfather" aria-label="Grandfather Mode"></label>
+                <div id="grandfatherHoursDiv" class="hidden"><label><a role="button" href="#" id="grandfatherHoursToggle">Grandfather Mode Active Hours</a></label></div>
                 <label for="kkSlider">K.K. Slider Frequency | <a role="button" href="#" id="kkSliderSonglistToggle">Songlist</a></label>
                 <select id="kkSlider">
                     <option value="always">Always</option>
@@ -44,13 +46,26 @@
         <div class="kkSliderSonglistPage">
             <div class="header">
                 <h1>K.K. Slider Songlist</h1>
-                <a id="backFromKK" href="#" role="button">Back</a>
+                <a class="back" href="#" role="button">Back</a>
             </div>
             <div class="content">
                 <div class="buttonContainer">
                     <button class="checkButtons" id="saveAllKK">Save</button>
                     <button class="checkButtons" id="checkAllKK">Check All</button>
                     <button class="checkButtons" id="uncheckAllKK">Uncheck All</button>
+                </div>
+            </div>
+        </div>
+        <div class="grandfatherModeHoursPage">
+            <div class="header">
+                <h1>Grandfather Hours</h1>
+                <a class="back" href="#" role="button">Back</a>
+            </div>
+            <div class="content">
+                <div class="buttonContainer">
+                    <button class="checkButtons" id="saveAllGM">Save</button>
+                    <button class="checkButtons" id="checkAllGM">Check All</button>
+                    <button class="checkButtons" id="uncheckAllGM">Uncheck All</button>
                 </div>
             </div>
         </div>

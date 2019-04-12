@@ -27,6 +27,26 @@ $(document).ready(() => {
     $(e.currentTarget).attr('state', newState)
   })
 
+  function toggleGMList(state) {
+    if (state === true) $('#grandfatherHoursDiv').removeClass('hidden')
+    else $('#grandfatherHoursDiv').addClass('hidden')
+  }
+  
+  $('#grandfather').on('change', (e) => {
+    setTimeout(function () {
+      let state = e.target.checked ? true : false
+      toggleGMList(state)
+      chrome.runtime.sendMessage({ 'optionChange': ['gm', state] })
+    }, 50)
+  })
+
+  chrome.storage.local.get(['optionGM'], result => {
+    if (result['optionGM']) {
+      if (result['optionGM'] === true) $('#grandfather').prop('checked', true)
+      toggleGMList(result['optionGM'])
+    }
+  })
+
   chrome.storage.local.get(['rainState'], result => {
     if (result['rainState']) {
       if (result['rainState'] === 'on') {
