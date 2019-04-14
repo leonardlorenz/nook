@@ -49,7 +49,7 @@ chrome.storage.local.get(['rainState'], result => {
   if (!result['rainState']) chrome.storage.local.set({ 'rainState': 'off' })
   // Otherwise, if it's on and music is playing, play the rain and set raining variable for further use.
   else if (result['rainState'] === 'on') {
-    if (playing) playRain()
+    if (nowPlaying.length > 1 && nowPlaying !== 'Nothing!') playRain()
     raining = true
   }
 })
