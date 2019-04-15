@@ -1,73 +1,156 @@
 <html>
-    <head>
-        <script src="js/jquery.js"></script>
-        <script src="js/actions.js"></script>
-        <script src="js/options.js"></script>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="fonts/open-sans.css">
-    </head>
-    <body>
-        <div class="main">
-            <div class="header">
-                <a id="github" class="thumbButton" href="https://github.com/matlsn/nook" target="_blank" title="Visit the GitHub Repository"><span class="offscreen">Visit the GitHub Repository</span></a>
-                <h1>Nook<span id="ver"></span></h1>
-                <button id="stateToggle" class="thumbButton" state="play" aria-label="Play/Pause" title="Play/Pause"></button>
-            </div>
-            <div class="content">
-                <div class="volumeBlock">
-                <label for="volume">Music Volume</label>
-                <input type="range" min="0" max="1" id="volume" step="0.01">
-                </div>
-                <div class="volumeBlock">
-                <label for="rain" id="rainDescriptor">Rain Volume <input type="checkbox" id="rainCheckbox" aria-labelledby="rainDescriptor"></label>
-                <input type="range" min="0" max="1" id="rain" step="0.01">
-                </div>
-                <label>Now playing: <span id="nowPlaying"></span></label>
-                <label for="gameSelect">Change game:</label>
-                <select id="gameSelect">
-                    <option value="population-growing">AC: Population Growing (GC)</option>
-                    <option value="wild-world">AC: Wild World / City Folk (DS)</option>
-                    <option value="wild-world-rainy">AC: Wild World / City Folk (DS) [Rainy]</option>
-                    <option value="wild-world-snowy">AC: Wild World / City Folk (DS) [Snowy]</option>
-                    <option value="new-leaf" selected>AC: New Leaf (3DS)</option>
-                    <option value="new-leaf-rainy">AC: New Leaf (3DS) [Rainy]</option>
-                    <option value="new-leaf-snowy">AC: New Leaf (3DS) [Snowy]</option>
-                </select>
-                <label for="grandfather">Grandfather Mode (plays once per hour) <input type="checkbox" id="grandfather" aria-label="Grandfather Mode"></label>
-                <div id="grandfatherHoursDiv" class="hidden"><label><a role="button" href="#" id="grandfatherHoursToggle">Grandfather Mode Active Hours</a></label></div>
-                <label for="kkSlider">K.K. Slider Frequency | <a role="button" href="#" id="kkSliderSonglistToggle">Songlist</a></label>
-                <select id="kkSlider">
-                    <option value="always">Always</option>
-                    <option value="afterEight">From 8pm to 12am on Saturday</option>
-                    <option value="never" selected>Never</option>
-                </select>
-            </div>
-        </div>
-        <div class="kkSliderSonglistPage">
-            <div class="header">
-                <h1>K.K. Slider Songlist</h1>
-                <a class="back" href="#" role="button">Back</a>
-            </div>
-            <div class="content">
-                <div class="buttonContainer">
-                    <button class="checkButtons" id="saveAllKK">Save</button>
-                    <button class="checkButtons" id="checkAllKK">Check All</button>
-                    <button class="checkButtons" id="uncheckAllKK">Uncheck All</button>
-                </div>
-            </div>
-        </div>
-        <div class="grandfatherModeHoursPage">
-            <div class="header">
-                <h1>Grandfather Hours</h1>
-                <a class="back" href="#" role="button">Back</a>
-            </div>
-            <div class="content">
-                <div class="buttonContainer">
-                    <button class="checkButtons" id="saveAllGM">Save</button>
-                    <button class="checkButtons" id="checkAllGM">Check All</button>
-                    <button class="checkButtons" id="uncheckAllGM">Uncheck All</button>
-                </div>
-            </div>
-        </div>
-    </body>
+
+<head>
+  <script src="js/jquery.js"></script>
+  <script src="js/actions.js"></script>
+  <script src="js/options.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="fonts/open-sans.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="header">
+      <a id="github" class="thumbButton" href="https://github.com/matlsn/nook" target="_blank"
+        title="Visit the GitHub Repository"><span class="offscreen">Visit the GitHub Repository</span></a>
+      <h1>Nook<span id="ver"></span></h1>
+      <button id="stateToggle" class="thumbButton" state="play" aria-label="Play/Pause" title="Play/Pause"></button>
+    </div>
+    <div class="content">
+      <div class="volumeBlock">
+        <label for="volume">Music Volume</label>
+        <input type="range" min="0" max="1" id="volume" step="0.01">
+      </div>
+      <div class="volumeBlock">
+        <label for="rain" id="rainDescriptor">Rain Volume <input type="checkbox" id="rainCheckbox"
+            aria-labelledby="rainDescriptor"></label>
+        <input type="range" min="0" max="1" id="rain" step="0.01">
+      </div>
+      <label>Now playing: <span id="nowPlaying"></span></label>
+      <hr>
+      <label for="gameSelect">Change game:</label>
+      <select id="gameSelect">
+        <option value="population-growing">AC: Population Growing (GC)</option>
+        <option value="wild-world">AC: Wild World / City Folk (DS)</option>
+        <option value="wild-world-rainy">AC: Wild World / City Folk (DS) [Rainy]</option>
+        <option value="wild-world-snowy">AC: Wild World / City Folk (DS) [Snowy]</option>
+        <option value="new-leaf" selected>AC: New Leaf (3DS)</option>
+        <option value="new-leaf-rainy">AC: New Leaf (3DS) [Rainy]</option>
+        <option value="new-leaf-snowy">AC: New Leaf (3DS) [Snowy]</option>
+      </select>
+      <label for="kkSlider">K.K. Slider Frequency | <a href="#" id="kkSliderSonglistToggle">Songlist</a></label>
+      <select id="kkSlider">
+        <option value="always">Always</option>
+        <option value="afterEight">From 8pm to 12am on Saturday</option>
+        <option value="never" selected>Never</option>
+      </select>
+      <label for="grandfather">Grandfather Mode (plays once per hour) <input type="checkbox" id="grandfather"
+          aria-label="Grandfather Mode"></label>
+      <div id="grandfatherHoursDiv" class="hidden"><label><a href="#" id="grandfatherHoursToggle">Grandfather Mode
+            Active Hours</a></label></div>
+      <label><a href="#" id="townTuneToggle">Town Tune Setup</a></label>
+    </div>
+  </div>
+  <div class="kkSliderSonglistPage">
+    <div class="header">
+      <h1>K.K. Slider Songlist</h1>
+      <a class="back" href="#" role="button">Back</a>
+    </div>
+    <div class="content">
+      <div class="buttonContainer">
+        <button class="checkButtons" id="saveAllKK">Save</button>
+        <button class="checkButtons" id="checkAllKK">Check All</button>
+        <button class="checkButtons" id="uncheckAllKK">Uncheck All</button>
+      </div>
+    </div>
+  </div>
+  <div class="grandfatherModeHoursPage">
+    <div class="header">
+      <h1>Grandfather Hours</h1>
+      <a class="back" href="#" role="button">Back</a>
+    </div>
+    <div class="content">
+      <div class="buttonContainer">
+        <button class="checkButtons" id="saveAllGM">Save</button>
+        <button class="checkButtons" id="checkAllGM">Check All</button>
+        <button class="checkButtons" id="uncheckAllGM">Uncheck All</button>
+      </div>
+    </div>
+  </div>
+  <div class="townTunePage">
+    <div class="header">
+      <h1>Town Tune Setup</h1>
+      <a class="back" href="#" role="button">Back</a>
+    </div>
+    <div class="content">
+      <div class="vertLabel">
+        <label for="tt1"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt1" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt2"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt2" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt3"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt3" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt4"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt4" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt5"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt5" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt6"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt6" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt7"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt7" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt8"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt8" step="1">
+      </div>
+      <br><br>
+      <div class="vertLabel">
+        <label for="tt9"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt9" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt10"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt10" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt11"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt11" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt12"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt12" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt13"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt13" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt14"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt14" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt15"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt15" step="1">
+      </div>
+      <div class="vertLabel">
+        <label for="tt16"></label>
+        <input type="range" orient="vertical" min="1" max="15" id="tt16" step="1">
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
 </html>

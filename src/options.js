@@ -31,6 +31,12 @@ chrome.storage.local.get(['optionGM'], result => {
   } else chrome.storage.local.set({ 'optionGM': false })
 })
 
+// Check if town tune has been configured and set it accordingly
+chrome.storage.local.get(['optionTownTune'], result => {
+  if (result['optionTownTune']) townTune = result['optionTownTune']
+  else chrome.storage.local.set({ 'optionTownTune': townTune })
+})
+
 // Check if KK songlist has been configured and set
 chrome.storage.local.get(['optionKKSonglist'], result => {
   if (result['optionKKSonglist']) kkSongs = result['optionKKSonglist']

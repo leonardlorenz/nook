@@ -30,6 +30,7 @@ let playing = false
 let KKSetting = ''
 let kkPlaying = null
 let grandfatherMode = false
+let townTune = ['G2', 'E3', '-', 'G2', 'F2', 'D3', '-', 'B2', 'C3', 'zZz', 'E2', 'zZz', 'C2', '-', 'zZz', 'zZz']
 
 function kkSliderCheck () {
   if (KKSetting.length < 1 || KKSetting === 'never') return false

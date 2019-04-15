@@ -23,6 +23,19 @@ $(document).ready(() => {
     }
   }
 
+  function doPlainPageSetup(toggle, pageParent) {
+    pages.push(pageParent)
+    $(toggle).on('click', e => {
+      $(pageParent).addClass('active')
+      $('.main').addClass('hidden')
+    }).on('keydown', function (e) {
+      if (e.keyCode === 13 || e.keyCode === 32) {
+        e.preventDefault()
+        this.click()
+      }
+    })
+  }
+
   function doListSetup(toggle, pageParent, post, optionToSet, checkOption, loopable) {
     pages.push(pageParent)
     let chkbox = `${post.toLowerCase()}Checkbox`
@@ -67,6 +80,8 @@ $(document).ready(() => {
   doListSetup('#kkSliderSonglistToggle', '.kkSliderSonglistPage', 'KK', 'optionKKSonglist', 'kkSonglist', kkSongs)
   doListSetup('#grandfatherHoursToggle', '.grandfatherModeHoursPage', 'GM', 'optionGMHourlist', 'gmHourlist', hours)
 
+  doPlainPageSetup('#townTuneToggle', '.townTunePage')
+
   doOptionSetup('select', 'optionGame', '#gameSelect', 'game')
   doOptionSetup('select', 'optionKK', '#kkSlider', 'kkFrequency')
   doOptionSetup('range', 'optionVolume', '#volume', 'volume', 1)
@@ -80,6 +95,23 @@ $(document).ready(() => {
       e.preventDefault()
       this.click()
     }
+  })
+
+  const steps = ['zZz', '-', 'G1', 'A2', 'B2', 'C2', 'D2', 'E2', 'F2', 'G2', 'A3', 'B3', 'C3', 'D3', 'E3']
+  chrome.storage.local.get(['optionTownTune'], result => {
+    var res = result['optionTownTune']
+    var index = 1
+    res.forEach(i => {
+      var sel = $(`#tt${index}`)
+      sel.val(steps.indexOf(i) + 1)
+      sel.prev('label').text(i)
+      index++
+    })
+  })
+  // Town tunes
+  $('.vertLabel > input').on('input', e => {
+    var val = +$(e.currentTarget).val() - 1
+    $(e.currentTarget).prev('label').text(steps[val])
   })
 
   chrome.management.getSelf(res => {
