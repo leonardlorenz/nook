@@ -50,7 +50,7 @@ function playRandomKK (check = false) {
 function playRain () {
   if (rainSound) rainSound.unload()
   rainSound = new Howl({
-    src: [`https://leonardlorenz.de/files/rain.ogg`],
+    src: [`rain.ogg`],
     loop: true,
     volume: 0
   })
